@@ -83,6 +83,8 @@ class GameModel:
                 return False
             elif element.y >= BG_HEIGHT:
                 self.text.lives -= 1
+                if self.text.lives <= 0:
+                    self.status = Status.game_over
                 return False
         return True
 

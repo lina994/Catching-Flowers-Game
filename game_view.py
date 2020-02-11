@@ -99,8 +99,7 @@ class GameView:
         self.canvas.pack()
         self.root.update()
 
-        # canvas elements id
-        self.elements_id = []
+        # canvas elements
         self.add_elements_to_canvas()
 
         self.add_event_handlers()
@@ -112,11 +111,11 @@ class GameView:
     def add_elements_to_canvas(self):
         for e in self.model.elements:
             if type(e) is TextInfo:
-                self.elements_id.append(DisplayGameText(self.canvas, e))
+                DisplayGameText(self.canvas, e)
             else:
-                self.elements_id.append(DisplayGameImage(self.canvas, e, self.images.get_image(e)))
+                DisplayGameImage(self.canvas, e, self.images.get_image(e))
         if self.model.status == Status.pause or self.model.status == Status.game_over:
-            self.elements_id.append(DisplayMenu(self.root, self.canvas, self.controller))
+            DisplayMenu(self.root, self.canvas, self.controller)
             self.is_menu_open = True
 
     def add_event_handlers(self):
